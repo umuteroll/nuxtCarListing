@@ -77,6 +77,9 @@ export default {
     border-style: groove;
     border-width: medium;
     background: mintcream;
+    word-wrap: break-word;
+    padding: 10px;
+
   }
   .descText{
       margin:10px;
@@ -97,18 +100,17 @@ export default {
   .description {
     width: 100%;
     height: 20%;
-   border-style: groove;
+    border-style: groove;
     border-width: medium;
     background: mintcream;
-    text-align:center ;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-wrap: break-word;
+    padding: 10px;
     }
   .info {
     width: 100%;
-    height: 30%;
-    background: midnightblue;
+    border-style: groove;
+    border-width: medium;
+    background: mintcream;
     position: absolute;
     bottom: 0;
   }

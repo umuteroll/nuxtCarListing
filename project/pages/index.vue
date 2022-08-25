@@ -13,7 +13,7 @@
     </div>
      </div>
 <div class="btnContainer">
-  <button class="btn" onclick="filterSelection('fruits')"> Görünüm</button>
+  <button class="btn" @click="fetchSomething"> Görünüm</button>
   <button class="btn" onclick="filterSelection('colors')"> Filter</button>
 </div>
 <ListingRow
@@ -23,15 +23,20 @@
 
 
 <script>
+  import axios from "axios";
+
  export default {
  data() {
     return {
     imageSource : "https://www.w3schools.com/images/lamp.jpg"
     };
   },
-
-
-
+  methods: {
+  async fetchSomething() {
+    const ip = await axios.get('http://sandbox.arabamd.com/api/v1/listing?sort=1&sortDirection=0&take=10')
+    console.log(ip)
+  }
+}
  }
 </script>
 <style>

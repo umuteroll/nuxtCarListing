@@ -41,7 +41,7 @@ export default {
 <style>
 
 .carousel__item {
-  min-height: 200px;
+  height: 62vh;
   width: 100%;
   background-color: white;
   color:  var(--vc-clr-white);
@@ -61,5 +61,23 @@ export default {
   box-sizing: content-box;
   border: 5px solid white;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+.carousel__item {
+  height: 41vh;
+  width: 100%;
+  background-color: white;
+  color:  var(--vc-clr-white);
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+  
+  }
 
 </style>

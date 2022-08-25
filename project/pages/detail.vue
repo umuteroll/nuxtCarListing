@@ -47,7 +47,6 @@ export default {
     width: 65%;
     height: 70%;
     float: left;
-background: yellow;
 }
 .info{
     width: 35%;
@@ -74,7 +73,6 @@ background: yellow;
   .photo{
     width: 100%;
     height: 50%;
-    background: yellow;
 }
 .description{
      width: 100%;

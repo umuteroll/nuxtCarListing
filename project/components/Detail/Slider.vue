@@ -41,7 +41,7 @@ export default {
 <style>
 
 .carousel__item {
-  height: 62vh;
+  height: 56vh;
   width: 100%;
   background-color: white;
   color:  var(--vc-clr-white);
@@ -66,7 +66,7 @@ export default {
   /* For mobile phones: */
 
 .carousel__item {
-  height: 41vh;
+  height: 35vh;
   width: 100%;
   background-color: white;
   color:  var(--vc-clr-white);

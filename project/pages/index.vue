@@ -57,7 +57,7 @@
 .navbar{
   width:100%;
   height: 70px;
-  background: wheat;
+  background: #ede4e4;
   text-align: center;
  
 }

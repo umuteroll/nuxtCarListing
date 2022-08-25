@@ -1,13 +1,72 @@
-<template>  
-<div class="container">
-    <picture>
-    <img
-      decoding="auto"
-      :src="src"
-    >
-  </picture>
-  selam selam
-</div>
+ <template> 
+  <div class="table">
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+     <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+     <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+    <div class="product">
+      <img :src="src">
+      <div class="model">FIAT PUNTO 2006</div>
+       <div class="city">İstanbul</div>
+      <div class="price">150000</div>
+    </div>
+  </div>
 </template>
 <script>
  export default {
@@ -22,3 +81,99 @@
 
  }
 </script>
+<style scoped>
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .product {
+  height: 100px;
+  width: 95%;
+  border-style: groove;
+  border-width: medium;
+  margin-left:30px;
+  padding: 10px;
+}
+.table{
+  background: mintcream;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+
+}
+.product > img {
+  height: 100%;
+  width: 95px;
+  float: left;
+}
+
+.product > div {
+  padding-left: 10px;
+  vertical-align: top;
+  line-height: 65px;
+  font-size: 15px;
+  float: left;
+}
+
+.product > div.price {
+  float: right;
+  font-size: 18px;
+}
+.model{
+  margin-left: 30px;
+  font-family:'Courier New', Courier, monospace; 
+ font-weight: 700;
+}
+.city{
+  margin-left: 100px;
+}
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .product {
+  height: 100px;
+  margin: 1px;
+  width:  100%;
+  border-style: groove;
+  border-width: medium;
+
+}
+.table{
+  background: mintcream;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  height: 100%;
+
+}
+.product > img {
+  height: 100px;
+  width:  20%;
+  float: left;
+}
+.city {
+  width: 79%;
+  height: 33%;
+  margin-left:1%
+}
+.price{
+  font-size: 18px;
+  width: 79%;
+  height: 33%;
+  margin-left:1%
+  }
+
+.model{
+  margin:1px;
+   width: 79%;
+  height: 33%;
+  margin-left:1%;
+ font-family:'Courier New', Courier, monospace;
+ font-weight: 700;
+
+}
+}
+
+
+
+</style>

@@ -1,22 +1,22 @@
 <template>
   <li class="listItem">
-    <span class="label">{{carLabel}}</span>
-    <span class="value">{{carValue}}</span>
+    <span class="label">{{ carLabel }}</span>
+    <span class="value">{{ carValue }}</span>
   </li>
 </template>
 
 <script>
 export default {
-   props: {
+  props: {
     carLabel: {
       type: String,
-      default: '',
-    }, 
-     carValue: {
-      type: String,
-      default: '',
-    }, 
+      default: "",
     },
+    carValue: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {};
   },

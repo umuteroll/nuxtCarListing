@@ -14,10 +14,7 @@
         <option>20</option>
         <option>50</option>
       </select>
-      <select
-        class="btn"
-        @change="setSort($event.target.selectedIndex)"
-      >
+      <select class="btn" @change="setSort($event.target.selectedIndex)">
         <option>Fiyat</option>
         <option>Tarih</option>
         <option>Model</option>

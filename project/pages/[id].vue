@@ -9,12 +9,19 @@
         </div>
 
         <div v-if="detailData" class="info">
-          <DetailInfo :carInfos="detailData" :mappedProp="mappedProp" :userInfo="detailData.userInfo" > </DetailInfo>
+          <DetailInfo
+            :carInfos="detailData"
+            :mappedProp="mappedProp"
+            :userInfo="detailData.userInfo"
+          >
+          </DetailInfo>
         </div>
 
-        <div  v-if="detailData"  v-html="detailData.text" class="description">
-      
-        </div>
+        <div
+          v-if="detailData"
+          v-html="detailData.text"
+          class="description"
+        ></div>
       </div>
       <div class="rightBar"></div>
     </div>
@@ -26,40 +33,40 @@ import axios from "axios";
 export default {
   data() {
     return {
-    detailDataResponse:{},
-    id:this.$route.params.id,
-    mappedProp:{},
+      detailDataResponse: {},
+      id: this.$route.params.id,
+      mappedProp: {},
     };
   },
-  computed:{
-    detailData(){
+  computed: {
+    detailData() {
       return this.detailDataResponse;
-    }
+    },
   },
-   created(){
-  this.getDetailDataApi();
+  created() {
+    this.getDetailDataApi();
   },
- methods: {
-     async getDetailDataApi(){
-    try {
-     const response = await axios.get(`http://sandbox.arabamd.com/api/v1/detail?id=${this.id}`);
-     this.detailDataResponse = response.data;
-     this.mapProportiesArray();
-    } catch (error) {
-      console.log("servisten veriyi alırken bir zorluk yaşandı")
-    }
-  },
-    mapProportiesArray(){
-     let obj = {};
-     this.detailData?.properties?.forEach((pr) => {
-      obj[pr.name] = pr.value
+  methods: {
+    async getDetailDataApi() {
+      try {
+        const response = await axios.get(
+          `http://sandbox.arabamd.com/api/v1/detail?id=${this.id}`
+        );
+        this.detailDataResponse = response.data;
+        this.mapProportiesArray();
+      } catch (error) {
+        console.log("servisten veriyi alırken bir zorluk yaşandı");
+      }
+    },
+    mapProportiesArray() {
+      let obj = {};
+      this.detailData?.properties?.forEach((pr) => {
+        obj[pr.name] = pr.value;
       });
-     obj= JSON.parse(JSON.stringify(obj))
-     this.mappedProp ={...obj} ;    
-   },
-
- }
-
+      obj = JSON.parse(JSON.stringify(obj));
+      this.mappedProp = { ...obj };
+    },
+  },
 };
 </script>
 
@@ -100,7 +107,7 @@ export default {
     width: 25%;
     height: 100%;
     float: right;
-    background:mintcream;
+    background: mintcream;
   }
   .description {
     width: 73.9%;
@@ -109,10 +116,9 @@ export default {
     background: mintcream;
     word-wrap: break-word;
     padding: 10px;
-
   }
-  .descText{
-      margin:10px;
+  .descText {
+    margin: 10px;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -135,7 +141,7 @@ export default {
     background: mintcream;
     word-wrap: break-word;
     padding: 10px;
-    }
+  }
   .info {
     width: 100%;
     border-style: groove;
@@ -164,9 +170,9 @@ export default {
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
-  .descText{
-      margin:10px;
-      width: 50px;
+  .descText {
+    margin: 10px;
+    width: 50px;
   }
 }
 </style>

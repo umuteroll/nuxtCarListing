@@ -10,8 +10,18 @@
       </div>
     </div>
     <div class="btnContainer">
-      <button class="btn" @click="getListDataApi">Görünüm</button>
-      <button class="btn" onclick="filterSelection('colors')">Filter</button>
+      <select v-model="selected" @change="getListDataApi" class="btn">
+        <option>20</option>
+        <option>50</option>
+      </select>
+      <select
+        class="btn"
+        @change="setSort($event.target.selectedIndex)"
+      >
+        <option>Fiyat</option>
+        <option>Tarih</option>
+        <option>Model</option>
+      </select>
     </div>
     <ListingRow :carList="this.listData"></ListingRow>
   </div>
@@ -19,37 +29,40 @@
 
 
 <script>
- import {mapGetters, mapActions} from "vuex";
- import axios from "axios";
- export default {
- data() {
+import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
+export default {
+  data() {
     return {
-    listData:[],
+      listData: [],
+      selected: 20,
+      sort: 0,
     };
   },
-  mounted(){
+  mounted() {
     this.getListDataApi();
   },
   computed: {
-  ...mapGetters([
-      "getListData"
-  ])
+    ...mapGetters(["getListData"]),
   },
   methods: {
-    ...mapActions([
-    "setListDataFromApi"
-    ]
-  ),
-  async getListDataApi(){
-    try {
-     const response = await axios.get('http://sandbox.arabamd.com/api/v1/listing?sort=1&sortDirection=0&take=10');
-     this.listData = response.data;
-    } catch (error) {
-      console.log("servisten veriyi alırken bir zorluk yaşandı")
-    }
+    ...mapActions(["setListDataFromApi"]),
+    async getListDataApi() {
+      try {
+        const response = await axios.get(
+          `http://sandbox.arabamd.com/api/v1/listing?sort=${this.sort}&sortDirection=0&take=${this.selected}`
+        );
+        this.listData = response.data;
+      } catch (error) {
+        console.log("servisten veriyi alırken bir zorluk yaşandı");
+      }
+    },
+    setSort(param) {
+      this.sort = param;
+      this.getListDataApi();
+    },
   },
-}
- }
+};
 </script>
 <style>
 @media only screen and (min-width: 768px) {

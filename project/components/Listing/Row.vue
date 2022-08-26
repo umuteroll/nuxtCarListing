@@ -1,79 +1,20 @@
  <template> 
   <div class="table">
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-     <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-     <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
-    </div>
-    <div class="product">
-      <img :src="src">
-      <div class="model">FIAT PUNTO 2006</div>
-       <div class="city">İstanbul</div>
-      <div class="price">150000</div>
+    <div class="product" v-for="(product, index) in carList"
+        :key="index">
+      <img :src="product.photo">
+      <div class="model">{{product.modelName}}</div>
+       <div class="city">{{product.location.cityName}}</div>
+      <div class="price">{{product.priceFormatted}}</div>
     </div>
   </div>
 </template>
 <script>
  export default {
  props: {
-    src: {
-      type: String,
-      default: '',
+    carList: {
+      type: Array,
+      default: [],
     }, 
     }
 
@@ -124,7 +65,7 @@
  font-weight: 700;
 }
 .city{
-  margin-left: 100px;
+  padding-left: 300px;
 }
 }
 

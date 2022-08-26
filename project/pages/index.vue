@@ -10,20 +10,22 @@
       </div>
     </div>
     <div class="btnContainer">
-      <button class="btn" @click="setListDataFromApi">Görünüm</button>
+      <button class="btn" @click="getListDataApi">Görünüm</button>
       <button class="btn" onclick="filterSelection('colors')">Filter</button>
     </div>
-    <ListingRow :src="imageSource"></ListingRow>
+    <ListingRow :carList="this.listData"></ListingRow>
   </div>
 </template>
 
 
 <script>
  import {mapGetters, mapActions} from "vuex";
+ import axios from "axios";
  export default {
  data() {
     return {
-    imageSource : "https://www.w3schools.com/images/lamp.jpg"
+    imageSource : "https://www.w3schools.com/images/lamp.jpg",
+    listData:[],
     };
   },
   computed: {
@@ -35,8 +37,15 @@
     ...mapActions([
     "setListDataFromApi"
     ]
-  )
-
+  ),
+  async getListDataApi(){
+    try {
+     const response = await axios.get('http://sandbox.arabamd.com/api/v1/listing?sort=1&sortDirection=0&take=10');
+     this.listData = response.data;
+    } catch (error) {
+      console.log("servisten veriyi alırken bir zorluk yaşandı")
+    }
+  }
 }
  }
 </script>

@@ -1,11 +1,11 @@
  <template> 
   <div class="table">
     <div class="product" v-for="(product, index) in carList"
-        :key="index">
-      <img :src="product.photo">
-      <div class="model">{{product.modelName}}</div>
-       <div class="city">{{product.location.cityName}}</div>
-      <div class="price">{{product.priceFormatted}}</div>
+        :key="index">  
+       <img  @click="navDetail(product.id)" :src="product.photo">
+       <div  @click="navDetail(product.id)" class="model">{{product.modelName}}</div>
+       <div  @click="navDetail(product.id)" class="city">{{product.location.cityName}}</div>
+       <div  @click="navDetail(product.id)" class="price">{{product.priceFormatted}}</div> 
     </div>
   </div>
 </template>
@@ -16,8 +16,13 @@
       type: Array,
       default: [],
     }, 
-    }
-
+    },
+methods: {
+navDetail(id){
+  return navigateTo({
+    path: `/${id}`,
+  })  }
+}
 
 
  }

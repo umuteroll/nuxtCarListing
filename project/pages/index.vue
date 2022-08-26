@@ -24,9 +24,11 @@
  export default {
  data() {
     return {
-    imageSource : "https://www.w3schools.com/images/lamp.jpg",
     listData:[],
     };
+  },
+  mounted(){
+    this.getListDataApi();
   },
   computed: {
   ...mapGetters([
@@ -45,7 +47,7 @@
     } catch (error) {
       console.log("servisten veriyi alırken bir zorluk yaşandı")
     }
-  }
+  },
 }
  }
 </script>

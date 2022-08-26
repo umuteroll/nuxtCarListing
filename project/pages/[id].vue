@@ -4,16 +4,16 @@
     <div class="bigTable">
       <div class="topBar">UMUT OTOMOTİV</div>
       <div class="mainBar">
-        <div class="photo">
+        <div v-if="detailData" class="photo">
           <DetailSlider :imageArray="detailData.photos"></DetailSlider>
         </div>
 
-        <div class="info">
-          <DetailInfo :carInfos="detailData"> </DetailInfo>
+        <div v-if="detailData" class="info">
+          <DetailInfo :carInfos="detailData" :mappedProp="mappedProp" :userInfo="detailData.userInfo" > </DetailInfo>
         </div>
 
-        <div class="description">
-           asdgasdfasdgklasgjkldfasgjkldasdgjkjkadsgjkglasdkjlgasdjklgasdjklsdgjklgasdjkldgjklsjklsgdgjksjklasdgjklsdgjklsdgajklsdgjkasdgjklasdgjklsdgjkljklsdgjklsg
+        <div  v-if="detailData"  v-html="detailData.text" class="description">
+      
         </div>
       </div>
       <div class="rightBar"></div>
@@ -26,22 +26,38 @@ import axios from "axios";
 export default {
   data() {
     return {
-    detailData:{},
-    id:this.$route.params.id
+    detailDataResponse:{},
+    id:this.$route.params.id,
+    mappedProp:{},
     };
   },
-  mounted(){
+  computed:{
+    detailData(){
+      return this.detailDataResponse;
+    }
+  },
+   created(){
   this.getDetailDataApi();
   },
  methods: {
-    async getDetailDataApi(){
+     async getDetailDataApi(){
     try {
-     const response = await axios.get(`http://sandbox.arabamd.com/api/v1/detail?id=${this.id}`)
-     this.detailData = response.data;
+     const response = await axios.get(`http://sandbox.arabamd.com/api/v1/detail?id=${this.id}`);
+     this.detailDataResponse = response.data;
+     this.mapProportiesArray();
     } catch (error) {
       console.log("servisten veriyi alırken bir zorluk yaşandı")
     }
   },
+    mapProportiesArray(){
+     let obj = {};
+     this.detailData?.properties?.forEach((pr) => {
+      obj[pr.name] = pr.value
+      });
+     obj= JSON.parse(JSON.stringify(obj))
+     this.mappedProp ={...obj} ;    
+   },
+
  }
 
 };

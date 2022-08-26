@@ -1,12 +1,22 @@
 <template>
   <li class="listItem">
-    <span class="label">İLAN NO:</span>
-    <span class="value">1231234123512</span>
+    <span class="label">{{carLabel}}</span>
+    <span class="value">{{carValue}}</span>
   </li>
 </template>
 
 <script>
 export default {
+   props: {
+    carLabel: {
+      type: String,
+      default: '',
+    }, 
+     carValue: {
+      type: String,
+      default: '',
+    }, 
+    },
   data() {
     return {};
   },

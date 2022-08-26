@@ -17,6 +17,12 @@ import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
 
 import 'vue3-carousel/dist/carousel.css';
 export default {
+   props: {
+    imageArray: {
+      type: Array,
+      default: [],
+    }, 
+    },
     components: {
     Carousel,
     Slide,
@@ -25,12 +31,7 @@ export default {
   },
  data() {
   return {
-    imageArray : [
-      "https://www.w3schools.com/images/lamp.jpg",
-      "https://www.w3schools.com/images/lamp.jpg",
-      "https://www.w3schools.com/images/lamp.jpg",
-      "https://www.w3schools.com/images/lamp.jpg"
-    ]
+   
   
   }
  },

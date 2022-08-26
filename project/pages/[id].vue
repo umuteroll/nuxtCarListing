@@ -5,11 +5,11 @@
       <div class="topBar">UMUT OTOMOTİV</div>
       <div class="mainBar">
         <div class="photo">
-          <DetailSlider></DetailSlider>
+          <DetailSlider :imageArray="detailData.photos"></DetailSlider>
         </div>
 
         <div class="info">
-          <DetailInfo> </DetailInfo>
+          <DetailInfo :carInfos="detailData"> </DetailInfo>
         </div>
 
         <div class="description">
@@ -22,10 +22,28 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
-    return {};
+    return {
+    detailData:{},
+    id:this.$route.params.id
+    };
   },
+  mounted(){
+  this.getDetailDataApi();
+  },
+ methods: {
+    async getDetailDataApi(){
+    try {
+     const response = await axios.get(`http://sandbox.arabamd.com/api/v1/detail?id=${this.id}`)
+     this.detailData = response.data;
+    } catch (error) {
+      console.log("servisten veriyi alırken bir zorluk yaşandı")
+    }
+  },
+ }
+
 };
 </script>
 
@@ -63,19 +81,15 @@ export default {
     float: left;
   }
   .info {
-    width: 24.67%;
+    width: 25%;
     height: 100%;
     float: right;
     background:mintcream;
-     border-style: groove;
-    border-width: medium;
   }
   .description {
-    width: 74.69%;
+    width: 73.9%;
     height: 30%;
     float: left;
-    border-style: groove;
-    border-width: medium;
     background: mintcream;
     word-wrap: break-word;
     padding: 10px;
